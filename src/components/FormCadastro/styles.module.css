@@ -1,0 +1,36 @@
+.form {
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo {
+    color: red;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+    font-weight: 600;
+    color: #404040;
+}
+
+.form form input {
+    outline: none;
+    font-size: 16px;
+    color: #D3D3D3;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
