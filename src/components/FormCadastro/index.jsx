@@ -33,7 +33,7 @@ export const  FormCadastro= () => {
                     />
                 </label>
             </div>
-            <button type="submit">Enviar</button>
+            <button type="submit" className={style.btn}>Enviar</button>
         
           </form>
     </div>

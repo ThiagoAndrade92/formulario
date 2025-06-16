@@ -6,8 +6,17 @@
     justify-content: center;
 }
 
+.form form {
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.377);
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 5px;
+}
+
 .titulo {
-    color: red;
+    color: #4169e1;
+    font-size: 40px;
+    margin-bottom: 30px;
 }
 
 .inputs {
@@ -22,15 +31,33 @@
     flex-direction: column;
     cursor: pointer;
 
+    width: 100%;
     font-weight: 600;
     color: #404040;
+    margin-bottom: 20px;
 }
 
 .form form input {
     outline: none;
     font-size: 16px;
-    color: #D3D3D3;
+    color: #404040;
     padding: 5px;
     border-radius: 5px;
     border: 1px solid black;
+}
+
+.btn {
+    background-color: #4169e1;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 15px;
+    color: #fff;
+    box-shadow: 1px 1px 3px #808080;
+    cursor: pointer;
+    transition: color .3s ease;
+}
+
+.btn:hover {
+    background-color: #3657b9;
 }
