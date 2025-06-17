@@ -8,9 +8,13 @@ export const FormLogin = () => {
     const [ nomeLogin, setNomeLogin ] = useState('');
     const [ senhaLogin, setSenhaLogin ] = useState('');
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
+
   return (
     <div className={style.login}>
-        <form>
+        <form onSubmit={handleSubmit}>
             <h2 className={style.titulo}>Login</h2>
             <label>
                 Nome:
@@ -36,7 +40,7 @@ export const FormLogin = () => {
 
             <button type="submit" className={style.btn}>Enviar</button>
 
-            <span className={style.cadastrar}>Não possui uma conta? faça <a href="/">login</a></span>
+            <span className={style.cadastrar}>Não possui uma conta? faça <a href="/" onClick={e => e.preventDefault()}>login</a></span>
         </form>
 
     </div>
