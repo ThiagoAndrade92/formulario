@@ -1,6 +1,6 @@
 //Css
 import './App.css'
-import { FormCadastro } from './components/FormCadastro'
+import { FormLogin } from './components/FormLogin'
 
 //Components
 
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <FormCadastro />
+    <FormLogin />
     </>
   )
 }

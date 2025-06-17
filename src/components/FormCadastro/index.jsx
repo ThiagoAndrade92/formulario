@@ -1,4 +1,7 @@
-import { useState } from 'react';
+//React
+import { useEffect, useState } from 'react';
+
+//Css
 import style from './styles.module.css';
 
 export const  FormCadastro= () => {
@@ -10,6 +13,15 @@ export const  FormCadastro= () => {
     const [ erroSenha, setErroSenha ] = useState('');
     const [ erroConfirmarSenha, setErroConfirmarSenha ] = useState('');
 
+    useEffect(() => {
+        const dadosSalvos = JSON.parse(localStorage.getItem('usuario'));
+        if (dadosSalvos) {
+            setNome(dadosSalvos.nome || '');
+            setSenha(dadosSalvos.senha || '');
+            setConfirmarSenha(dadosSalvos.confirmarSenha || '');
+        }
+    }, []);
+
     const validarNome = (valor) => {
         setNome(valor);
         if (valor.length < 3 || valor.trim() === '') {
@@ -17,6 +29,7 @@ export const  FormCadastro= () => {
         } else {
             setErroNome('');
         }
+        salvarNoLocalStorage({nome: valor})
     };
 
     const validarSenha = (valor) => {
@@ -35,7 +48,14 @@ export const  FormCadastro= () => {
         } else {
             setErroConfirmarSenha('');
         }
+        salvarNoLocalStorage({confirmarSenha: valor})
     };
+
+    const salvarNoLocalStorage = (novoDado) => {
+        const dadosAtuais = JSON.parse(localStorage.getItem('usuario')) || {};
+        const dadosAtualizados = {...dadosAtuais, ...novoDado};
+        localStorage.setItem('usuario', JSON.stringify(dadosAtualizados));
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
