@@ -1,5 +1,8 @@
 //React
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
+
+//React Route
+import { useNavigate } from 'react-router';
 
 //Css
 import style from './styles.module.css';
@@ -13,14 +16,7 @@ export const  FormCadastro= () => {
     const [ erroSenha, setErroSenha ] = useState('');
     const [ erroConfirmarSenha, setErroConfirmarSenha ] = useState('');
 
-    useEffect(() => {
-        const dadosSalvos = JSON.parse(localStorage.getItem('usuario'));
-        if (dadosSalvos) {
-            setNome(dadosSalvos.nome || '');
-            setSenha(dadosSalvos.senha || '');
-            setConfirmarSenha(dadosSalvos.confirmarSenha || '');
-        }
-    }, []);
+    const navigate = useNavigate();
 
     const validarNome = (valor) => {
         setNome(valor);
@@ -69,6 +65,8 @@ export const  FormCadastro= () => {
         setSenha('');
         setConfirmarSenha('');
 
+        
+        navigate('/');
         console.log(nome, senha, confirmarSenha)
     };
 

@@ -1,15 +1,14 @@
 //Css
 import './App.css'
-import { FormLogin } from './components/FormLogin'
 
 //Components
-
+import { Rotas } from './components/Rotas'
 
 function App() {
 
   return (
     <>
-    <FormLogin />
+      <Rotas />
     </>
   )
 }

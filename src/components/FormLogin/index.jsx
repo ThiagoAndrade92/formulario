@@ -1,15 +1,40 @@
 //React
 import { useState } from 'react';
 
+//React Route
+import { RotasLink } from '../RotasLink';
+import { useNavigate } from 'react-router';
+
 //Css
 import style from './styles.module.css';
 
 export const FormLogin = () => {
     const [ nomeLogin, setNomeLogin ] = useState('');
     const [ senhaLogin, setSenhaLogin ] = useState('');
+    const [ erro, setErro ] = useState('');
+
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        const dadosSalvos = JSON.parse(localStorage.getItem('usuario'));
+
+        if (dadosSalvos) {
+            const nomeSalvo = dadosSalvos.nome;
+            const senhaSalva = dadosSalvos.confirmarSenha;
+
+            if (nomeLogin === nomeSalvo && senhaLogin === senhaSalva) {
+                navigate('/home/')
+            } else {
+                setErro('Nome ou senha incorretos.')
+            }
+        } else {
+            setErro('Nenhum usuário cadastrado');
+        }
+
+        setNomeLogin('');
+        setSenhaLogin('');
     }
 
   return (
@@ -25,10 +50,11 @@ export const FormLogin = () => {
                 value={nomeLogin}
                 onChange={e => setNomeLogin(e.target.value)}
                 />
+                {erro && <span className={style.erro}>{erro}</span>}
             </label>
 
             <label>
-                Nome:
+                Senha:
                 <input 
                 type="password" 
                 id='senhaLogin'
@@ -36,11 +62,12 @@ export const FormLogin = () => {
                 value={senhaLogin}
                 onChange={e => setSenhaLogin(e.target.value)}
                 />
+                {erro && <span className={style.erro}>{erro}</span>}
             </label>
 
             <button type="submit" className={style.btn}>Enviar</button>
 
-            <span className={style.cadastrar}>Não possui uma conta? faça <a href="/" onClick={e => e.preventDefault()}>login</a></span>
+            <span className={style.cadastrar}>Não possui uma conta? faça seu <RotasLink href="/cadastro/">cadastro</RotasLink></span>
         </form>
 
     </div>
